@@ -23,4 +23,13 @@ function hideNav() { //Hides the Nav
     	navArrow.classList.add("right");
 	}
 	
-};
+}
+
+function hideFilter() {
+
+	if (document.getElementById("filter").style.display == "flex") {
+		document.getElementById("filter").style.display = "none";
+	} else {
+		document.getElementById("filter").style.display = "flex";
+	}
+}
