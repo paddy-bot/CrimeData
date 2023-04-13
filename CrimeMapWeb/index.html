@@ -19,9 +19,9 @@
         <nav class="navbar">
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-btn"><i class="arrow right"></i></a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Map</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Graph</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">FAQ</a></li>
+                <li class="nav-item" id="hideNav1"><a href="#" class="nav-link">Map</a></li>
+                <li class="nav-item" id="hideNav2"><a href="#" class="nav-link">Graph</a></li>
+                <li class="nav-item" id="hideNav3"><a href="#" class="nav-link">FAQ</a></li>
             </ul>
             <!--For Mobile Responsive-->
             <div class="hamburger">
@@ -32,14 +32,14 @@
         </nav>
     </header>
     <div class="grid-wrapper">
-        <section class="filter-box">
-            <h1>Filters</h1>
+        <section id="filter" class="filter-box">
+            <h1 id="filterA">Filters</h1>
         </section>
         <section class="map-box">
             <h1>Main Map</h1>
         </section>
     </div>
-    
+    <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()"/>
     <footer>
 
     </footer>
