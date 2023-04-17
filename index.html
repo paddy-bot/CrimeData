@@ -45,6 +45,9 @@
                 <label><input type="checkbox" name="crime-category" value="Larceny" checked> Larceny</label><br>
                 <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
                     Offense</label><br>
+                <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)" checked>Theft</label><br>
+                <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" checked>Break-ins</label><br>
+                <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo" checked>Commercial</label><br>
             </div>
         </section>
         <section class="map-box">
@@ -55,6 +58,23 @@
     <footer>
 
     </footer>
+    <!-- For the toggleButtons function, the value of x corresponds to different categories, 1 is for the overall theft category -->
+    <script>
+
+    function toggleButtons(x) {
+            if (x == 1) {
+                if (document.getElementById("breakF").style.display == "none") {
+                    document.getElementById("breakF").style.display = "inline";
+                    document.getElementById("breakCo").style.display = "inline";
+                } else {
+                    document.getElementById("breakF").style.display = "none";
+                    document.getElementById("breakCo").style.display="none";
+                    
+                }
+                
+            }
+        }
+    </script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script
         src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
