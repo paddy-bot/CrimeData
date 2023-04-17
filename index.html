@@ -49,12 +49,14 @@
                 <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
                 <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo" checked>Commercial</label><br>
                 <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR" checked>Residential</label><br>
-                <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV" checked>Vehicle</label><br>
+                <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV" onclick="toggleButtons(1.2)" checked>Vehicle</label><br>
                 <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV" checked>Theft from Vehicle</label><br>
                 <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV" checked>Theft Of Vehicle</label><br>
 
                 <br>
-                <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent" onclick="toggleButtons(2)"
+                <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent" onclick="toggleButtons(2)" checked>Violent Offence</label><br>
+                <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault" onclick="toggleButtons(2.1)" checked>Assault</label><br>
+                <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW" checked>Assault With Deadly Weapon</label><br>
             </div>
         </section>
         <section class="map-box">
@@ -65,6 +67,9 @@
     <footer>
         <p id="theftToggle" style="display:none">on</p>
         <p id="breakInToggle" style="display:none">on</p>
+        <p id="vehicleToggle" style="display:none">on</p>
+        <p id="violentOToggle" style="display:none">on</p>
+        <p id="assaultToggle" style="display:none">on</p>
     </footer>
     <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category -->
         <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
@@ -79,12 +84,14 @@
                         document.getElementById("breakR").style.display = "inline";
                     }
                     document.getElementById("theftV").style.display = "inline";
-                    document.getElementById("tFV").style.display = "inline";
-                    document.getElementById("tOV").style.display = "inline";
+                    if (document.getElementById("vehicleToggle").innerHTML == "on") {
+                        document.getElementById("tFV").style.display = "inline";
+                        document.getElementById("tOV").style.display = "inline";
+                    }
                     document.getElementById("theftToggle").innerHTML = "on";
                 } else {
                     document.getElementById("breakF").style.display = "none";
-                    document.getElementById("breakCo").style.display="none";
+                    document.getElementById("breakCo").style.display = "none";
                     document.getElementById("breakR").style.display = "none";
                     document.getElementById("theftV").style.display = "none";
                     document.getElementById("tFV").style.display = "none";
@@ -103,10 +110,38 @@
                     document.getElementById("breakR").style.display = "none";
                     document.getElementById("breakInToggle").innerHTML = "off";
                 }
+            } else if (x == 1.2) {
+                if (document.getElementById("vehicleToggle").innerHTML == "off") {
+                    document.getElementById("tFV").style.display = "inline";
+                    document.getElementById("tOV").style.display = "inline";
+                    document.getElementById("vehicleToggle").innerHTML = "on";
+                } else {
+                    document.getElementById("tFV").style.display = "none";
+                    document.getElementById("tOV").style.display = "none";
+                    document.getElementById("vehicleToggle").innerHTML = "off";
+                }
             }
 
             if (x == 2) {
-
+                if (document.getElementById("violentOToggle").innerHTML == "off") {
+                    document.getElementById("assault").style.display = "inline";
+                    if (document.getElementById("assaultToggle").innerHTML == "on") {
+                        document.getElementById("assaultWDW").style.display = "inline";
+                    }
+                    document.getElementById("violentOToggle").innerHTML = "on";
+                } else {
+                    document.getElementById("assault").style.display = "none";
+                    document.getElementById("assaultWDW").style.display = "none";
+                    document.getElementById("violentOToggle").innerHTML = "off";
+                }
+            } else if (x == 2.1) {
+                if (document.getElementById("assaultToggle").innerHTML == "off") {
+                    document.getElementById("assaultWDW").style.display = "inline";
+                    document.getElementById("assaultToggle").innerHTML = "on";
+                } else {
+                    document.getElementById("assaultWDW").style.display = "none";
+                    document.getElementById("assaultToggle").innerHTML = "off";
+                }
             }
         }
     </script>
