@@ -46,12 +46,15 @@
                 <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
                     Offense</label><br>
                 <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)" checked>Theft</label><br>
-                <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" checked>Break-ins</label><br>
+                <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
                 <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo" checked>Commercial</label><br>
                 <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR" checked>Residential</label><br>
                 <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV" checked>Vehicle</label><br>
                 <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV" checked>Theft from Vehicle</label><br>
                 <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV" checked>Theft Of Vehicle</label><br>
+
+                <br>
+                <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent" onclick="toggleButtons(2)"
             </div>
         </section>
         <section class="map-box">
@@ -60,20 +63,25 @@
     </div>
     <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()" />
     <footer>
-
+        <p id="theftToggle" style="display:none">on</p>
+        <p id="breakInToggle" style="display:none">on</p>
     </footer>
-    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the break-in category, 3 is for the vehicle category -->
+    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category -->
+        <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
     <script>
 
-    function toggleButtons(x,y) {
+    function toggleButtons(x) {
             if (x == 1) {
-                if (document.getElementById("breakF").style.display == "none") {
+                if (document.getElementById("theftToggle").innerHTML == "off") {
                     document.getElementById("breakF").style.display = "inline";
-                    document.getElementById("breakCo").style.display = "inline";
-                    document.getElementById("breakR").style.display = "inline";
+                    if (document.getElementById("breakInToggle").innerHTML == "on") {
+                        document.getElementById("breakCo").style.display = "inline";
+                        document.getElementById("breakR").style.display = "inline";
+                    }
                     document.getElementById("theftV").style.display = "inline";
                     document.getElementById("tFV").style.display = "inline";
                     document.getElementById("tOV").style.display = "inline";
+                    document.getElementById("theftToggle").innerHTML = "on";
                 } else {
                     document.getElementById("breakF").style.display = "none";
                     document.getElementById("breakCo").style.display="none";
@@ -81,9 +89,24 @@
                     document.getElementById("theftV").style.display = "none";
                     document.getElementById("tFV").style.display = "none";
                     document.getElementById("tOV").style.display = "none";
+                    document.getElementById("theftToggle").innerHTML = "off";
                     
                 }
                 
+            } else if (x == 1.1) {
+                if (document.getElementById("breakInToggle").innerHTML == "off") {
+                    document.getElementById("breakCo").style.display = "inline";
+                    document.getElementById("breakR").style.display = "inline";
+                    document.getElementById("breakInToggle").innerHTML = "on";
+                } else {
+                    document.getElementById("breakCo").style.display="none";
+                    document.getElementById("breakR").style.display = "none";
+                    document.getElementById("breakInToggle").innerHTML = "off";
+                }
+            }
+
+            if (x == 2) {
+
             }
         }
     </script>
