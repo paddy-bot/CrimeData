@@ -48,6 +48,10 @@
                 <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)" checked>Theft</label><br>
                 <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" checked>Break-ins</label><br>
                 <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo" checked>Commercial</label><br>
+                <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR" checked>Residential</label><br>
+                <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV" checked>Vehicle</label><br>
+                <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV" checked>Theft from Vehicle</label><br>
+                <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV" checked>Theft Of Vehicle</label><br>
             </div>
         </section>
         <section class="map-box">
@@ -58,17 +62,25 @@
     <footer>
 
     </footer>
-    <!-- For the toggleButtons function, the value of x corresponds to different categories, 1 is for the overall theft category -->
+    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the break-in category, 3 is for the vehicle category -->
     <script>
 
-    function toggleButtons(x) {
+    function toggleButtons(x,y) {
             if (x == 1) {
                 if (document.getElementById("breakF").style.display == "none") {
                     document.getElementById("breakF").style.display = "inline";
                     document.getElementById("breakCo").style.display = "inline";
+                    document.getElementById("breakR").style.display = "inline";
+                    document.getElementById("theftV").style.display = "inline";
+                    document.getElementById("tFV").style.display = "inline";
+                    document.getElementById("tOV").style.display = "inline";
                 } else {
                     document.getElementById("breakF").style.display = "none";
                     document.getElementById("breakCo").style.display="none";
+                    document.getElementById("breakR").style.display = "none";
+                    document.getElementById("theftV").style.display = "none";
+                    document.getElementById("tFV").style.display = "none";
+                    document.getElementById("tOV").style.display = "none";
                     
                 }
                 
