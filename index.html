@@ -57,6 +57,9 @@
                 <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent" onclick="toggleButtons(2)" checked>Violent Offence</label><br>
                 <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault" onclick="toggleButtons(2.1)" checked>Assault</label><br>
                 <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW" checked>Assault With Deadly Weapon</label><br>
+                <label id="Sassault"><input type="checkbox" name="SAssault" value="SAssault" id="SassaultWDW" checked>Sexual Assault</label><br>
+                <label id="kidnapping"><input type="checkbox" name="Kidnapping" value="Kidnapping" id="kidnapping" checked>Kidnapping</label><br>
+                <label id="homicide"><input type="checkbox" name="Homicide" value="Homicide" id="homicide" checked>Homicide</label><br>
             </div>
         </section>
         <section class="map-box">
@@ -127,19 +130,27 @@
                     document.getElementById("assault").style.display = "inline";
                     if (document.getElementById("assaultToggle").innerHTML == "on") {
                         document.getElementById("assaultWDW").style.display = "inline";
+                        document.getElementById("Sassault").style.display = "inline";
                     }
+                    document.getElementById("kidnapping").style.display = "inline";
+                    document.getElementById("homicide").style.display = "inline";
                     document.getElementById("violentOToggle").innerHTML = "on";
                 } else {
                     document.getElementById("assault").style.display = "none";
                     document.getElementById("assaultWDW").style.display = "none";
+                    document.getElementById("Sassault").style.display = "none";
+                    document.getElementById("kidnapping").style.display = "none";
+                    document.getElementById("homicide").style.display = "none";
                     document.getElementById("violentOToggle").innerHTML = "off";
                 }
             } else if (x == 2.1) {
                 if (document.getElementById("assaultToggle").innerHTML == "off") {
                     document.getElementById("assaultWDW").style.display = "inline";
+                    document.getElementById("Sassault").style.display = "inline";
                     document.getElementById("assaultToggle").innerHTML = "on";
                 } else {
                     document.getElementById("assaultWDW").style.display = "none";
+                    document.getElementById("Sassault").style.display = "none";
                     document.getElementById("assaultToggle").innerHTML = "off";
                 }
             }
