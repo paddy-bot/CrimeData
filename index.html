@@ -60,6 +60,13 @@
                 <label id="Sassault"><input type="checkbox" name="SAssault" value="SAssault" id="SassaultWDW" checked>Sexual Assault</label><br>
                 <label id="kidnapping"><input type="checkbox" name="Kidnapping" value="Kidnapping" id="kidnapping" checked>Kidnapping</label><br>
                 <label id="homicide"><input type="checkbox" name="Homicide" value="Homicide" id="homicide" checked>Homicide</label><br>
+                
+                <br>
+                <label id="disturbance"><input type="checkbox" name="Disturbance" value="Disturbance" id="disturbance" onclick="toggleButtons(3)" checked>Disturbance</label><br>
+                <label id="disorder"><input type="checkbox" name="Disorder" value="Disorder" id="disorder" checked>Disorder</label><br>
+                <label id="drugs"><input type="checkbox" name="Drugs" value="Drugs" id="drugs" onclick="toggleButtons(3.1)" checked>Drugs</label><br>
+                <label id="narcotics"><input type="checkbox" name="Narcotics" value="Narcotics" id="narcotics" checked>Narcotics</label><br>
+                <label id="alcohol"><input type="checkbox" name="alcohol" value="Alcohol" id="alcohol" checked>Alcohol</label><br>
             </div>
         </section>
         <section class="map-box">
@@ -73,8 +80,10 @@
         <p id="vehicleToggle" style="display:none">on</p>
         <p id="violentOToggle" style="display:none">on</p>
         <p id="assaultToggle" style="display:none">on</p>
+        <p id="disturbanceToggle" style="display:none">on</p>
+        <p id="drugsToggle" style="display:none">on</p>
     </footer>
-    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category -->
+    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category, 3 is for the overall disturance category -->
         <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
     <script>
 
@@ -152,6 +161,34 @@
                     document.getElementById("assaultWDW").style.display = "none";
                     document.getElementById("Sassault").style.display = "none";
                     document.getElementById("assaultToggle").innerHTML = "off";
+                }
+            }
+            
+            if (x == 3) {
+            	if (document.getElementById("disturbanceToggle").innerHTML == "off") {
+                	document.getElementById("disorder").style.display = "inline";
+                    document.getElementById("drugs").style.display = "inline";
+                    if (document.getElementById("drugsToggle").innerHTML == "on") {
+                    	document.getElementById("narcotics").style.display = "inline";
+                    	document.getElementById("alcohol").style.display = "inline";
+                    }
+                    document.getElementById("disturbanceToggle").innerHTML = "on";
+                } else {
+                	document.getElementById("disorder").style.display = "none";
+                    document.getElementById("drugs").style.display = "none";
+                    document.getElementById("narcotics").style.display = "none";
+                    document.getElementById("alcohol").style.display = "none";
+                	document.getElementById("disturbanceToggle").innerHTML = "off"
+                }
+            } else if (x == 3.1) {
+            	if (document.getElementById("drugsToggle").innerHTML == "off") {
+                	document.getElementById("narcotics").style.display = "inline";
+                    document.getElementById("alcohol").style.display = "inline";
+                    document.getElementById("drugsToggle").innerHTML = "on";
+                } else {
+                	document.getElementById("narcotics").style.display = "none";
+                    document.getElementById("alcohol").style.display = "none";
+                    document.getElementById("drugsToggle").innerHTML = "off";
                 }
             }
         }
