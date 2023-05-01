@@ -66,7 +66,14 @@
                 <label id="disorder"><input type="checkbox" name="Disorder" value="Disorder" id="disorder" checked>Disorder</label><br>
                 <label id="drugs"><input type="checkbox" name="Drugs" value="Drugs" id="drugs" onclick="toggleButtons(3.1)" checked>Drugs</label><br>
                 <label id="narcotics"><input type="checkbox" name="Narcotics" value="Narcotics" id="narcotics" checked>Narcotics</label><br>
-                <label id="alcohol"><input type="checkbox" name="alcohol" value="Alcohol" id="alcohol" checked>Alcohol</label><br>
+                <label id="alcohol"><input type="checkbox" name="Alcohol" value="Alcohol" id="alcohol" checked>Alcohol</label><br>
+                
+                <br>
+                <label id="other"><input type="checkbox" name="Other" value="Other" id="other" onclick="toggleButtons(4)" checked>Other 911 calls</label><br>
+                <label id="fire"><input type="checkbox" name="Fire" value="Fire" id="fire" checked>Fire</label><br>
+                <label id="medicalEmergency"><input type="checkbox" name="MedicalEmergency" value="MedicalEmergency" id="medicalEmergency" checked>Medical Emergency</label><br>
+                <label id="otherCall"><input type="checkbox" name="OtherCall" value="OtherCall" id="otherCall" checked>Other Call</label><br>
+                <label id="qolCheck"><input type="checkbox" name="QOLCheck" value="QOLCheck" id="qolCheck" checked>Quality of Life Check</label><br>
             </div>
         </section>
         <section class="map-box">
@@ -82,8 +89,9 @@
         <p id="assaultToggle" style="display:none">on</p>
         <p id="disturbanceToggle" style="display:none">on</p>
         <p id="drugsToggle" style="display:none">on</p>
+        <p id="otherToggle" style="display:none">on</p>
     </footer>
-    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category, 3 is for the overall disturance category -->
+    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category, 3 is for the overall disturance category, and 4 is for the others -->
         <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
     <script>
 
@@ -189,6 +197,22 @@
                 	document.getElementById("narcotics").style.display = "none";
                     document.getElementById("alcohol").style.display = "none";
                     document.getElementById("drugsToggle").innerHTML = "off";
+                }
+            }
+            
+            if (x == 4) {
+            	if (document.getElementById("otherToggle").innerHTML == "off") {
+                	document.getElementById("fire").style.display = "inline";
+                    document.getElementById("medicalEmergency").style.display = "inline";
+                    document.getElementById("otherCall").style.display = "inline";
+                    document.getElementById("qolCheck").style.display = "inline";
+                    document.getElementById("otherToggle").innerHTML = "on"
+                } else {
+                	document.getElementById("fire").style.display = "none";
+                    document.getElementById("medicalEmergency").style.display = "none";
+                    document.getElementById("otherCall").style.display = "none";
+                    document.getElementById("qolCheck").style.display = "none";
+                    document.getElementById("otherToggle").innerHTML = "off"
                 }
             }
         }
