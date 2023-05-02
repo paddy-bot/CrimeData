@@ -91,6 +91,9 @@
         <p id="vehicleToggle" style="display:none">on</p>
         <p id="violentOToggle" style="display:none">on</p>
         <p id="assaultToggle" style="display:none">on</p>
+        <p id="disturbanceToggle" style="display:none">on</p>
+        <p id="drugsToggle" style="display:none">on</p>
+        <p id="otherToggle" style="display:none">on</p>
     </footer>
     <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category -->
     <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
@@ -148,20 +151,72 @@
                     document.getElementById("assault").style.display = "inline";
                     if (document.getElementById("assaultToggle").innerHTML == "on") {
                         document.getElementById("assaultWDW").style.display = "inline";
+                        document.getElementById("Sassault").style.display = "inline";
                     }
+                    document.getElementById("kidnapping").style.display = "inline";
+                    document.getElementById("homicide").style.display = "inline";
                     document.getElementById("violentOToggle").innerHTML = "on";
                 } else {
                     document.getElementById("assault").style.display = "none";
                     document.getElementById("assaultWDW").style.display = "none";
+                    document.getElementById("Sassault").style.display = "none";
+                    document.getElementById("kidnapping").style.display = "none";
+                    document.getElementById("homicide").style.display = "none";
                     document.getElementById("violentOToggle").innerHTML = "off";
                 }
             } else if (x == 2.1) {
                 if (document.getElementById("assaultToggle").innerHTML == "off") {
                     document.getElementById("assaultWDW").style.display = "inline";
+                    document.getElementById("Sassault").style.display = "inline";
                     document.getElementById("assaultToggle").innerHTML = "on";
                 } else {
                     document.getElementById("assaultWDW").style.display = "none";
+                    document.getElementById("Sassault").style.display = "none";
                     document.getElementById("assaultToggle").innerHTML = "off";
+                }
+            }
+            
+            if (x == 3) {
+            	if (document.getElementById("disturbanceToggle").innerHTML == "off") {
+                	document.getElementById("disorder").style.display = "inline";
+                    document.getElementById("drugs").style.display = "inline";
+                    if (document.getElementById("drugsToggle").innerHTML == "on") {
+                    	document.getElementById("narcotics").style.display = "inline";
+                    	document.getElementById("alcohol").style.display = "inline";
+                    }
+                    document.getElementById("disturbanceToggle").innerHTML = "on";
+                } else {
+                	document.getElementById("disorder").style.display = "none";
+                    document.getElementById("drugs").style.display = "none";
+                    document.getElementById("narcotics").style.display = "none";
+                    document.getElementById("alcohol").style.display = "none";
+                	document.getElementById("disturbanceToggle").innerHTML = "off"
+                }
+            } else if (x == 3.1) {
+            	if (document.getElementById("drugsToggle").innerHTML == "off") {
+                	document.getElementById("narcotics").style.display = "inline";
+                    document.getElementById("alcohol").style.display = "inline";
+                    document.getElementById("drugsToggle").innerHTML = "on";
+                } else {
+                	document.getElementById("narcotics").style.display = "none";
+                    document.getElementById("alcohol").style.display = "none";
+                    document.getElementById("drugsToggle").innerHTML = "off";
+                }
+            }
+            
+            if (x == 4) {
+            	if (document.getElementById("otherToggle").innerHTML == "off") {
+                	document.getElementById("fire").style.display = "inline";
+                    document.getElementById("medicalEmergency").style.display = "inline";
+                    document.getElementById("otherCall").style.display = "inline";
+                    document.getElementById("qolCheck").style.display = "inline";
+                    document.getElementById("otherToggle").innerHTML = "on"
+                } else {
+                	document.getElementById("fire").style.display = "none";
+                    document.getElementById("medicalEmergency").style.display = "none";
+                    document.getElementById("otherCall").style.display = "none";
+                    document.getElementById("qolCheck").style.display = "none";
+                    document.getElementById("otherToggle").innerHTML = "off"
                 }
             }
         }
