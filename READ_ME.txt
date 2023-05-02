@@ -25,3 +25,10 @@ _________________________
 
 pandas (pip install pandas)
 googlemaps (pip install googlemaps)
+
+
+
+Running GoogleMutant and LeafletJS for DataPlotting
+______________________________________________________
+npm install --save leaflet.gridlayer.googlemutant
+
