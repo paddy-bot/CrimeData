@@ -1,50 +1,31 @@
-var clusterers = {}; // Store the MarkerClusterer instances
-var markers = {}; // Store the markers for each category
-
 function initMap() {
-  var map = new google.maps.Map(document.querySelector(".map-box"), {
-    zoom: 12,
-    center: { lat: 38.627, lng: -90.199 },
-  });
-
   d3.csv("geocoded_December2020.csv", function (d) {
     return {
-      lat: +d.Latitude,
-      lng: +d.Longitude,
+      complaint: d.Complaint,
+      date: d.DateOccur,
+      crime: d.Crime,
       description: d.Description,
-      date: d.Date,
-      category: d.Category,
+      address: d.ILEADSAddress,
+      street: d.ILEADSStreet,
+      category: d['Generic Crime'],
+      lat: +d.Latitude,
+      lng: +d.Longitude
     };
-  }).then(function (crimeData) {
-    for (var i = 0; i < crimeData.length; i++) {
-      var marker = new google.maps.Marker({
-        position: { lat: crimeData[i].lat, lng: crimeData[i].lng },
-        title: crimeData[i].description,
-      });
+  }).then(function (data) {
+    // Initialize the Leaflet Map
+    var map = L.map('map-container').setView([38.627, -90.199], 12);
 
-      var category = crimeData[i].category;
-      if (!markers[category]) {
-        markers[category] = [];
-      }
-      markers[category].push(marker);
-    }
+    var googleMapsLayer = L.gridLayer.googleMutant({
+      type: 'roadmap' // Can also be 'satellite', 'terrain', or 'hybrid'
+    });
+    map.addLayer(googleMapsLayer);
 
-    for (var category in markers) {
-      clusterers[category] = new MarkerClusterer(map, markers[category], {
-        imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-      });
-    }
+    var markers = L.markerClusterGroup();
+
+    data.forEach(function (d) {
+      var marker = L.marker([d.lat, d.lng]).bindPopup(d.description);
+      markers.addLayer(marker);
+    });
+    map.addLayer(markers);
   });
 }
-
-// Toggle the visibility of a crime category
-function toggleCategory(category, visible) {
-  if (clusterers[category]) {
-    clusterers[category].clearMarkers();
-    if (visible) {
-      clusterers[category].addMarkers(markers[category]);
-    }
-  }
-}
-
-google.maps.event.addDomListener(window, "load", initMap);

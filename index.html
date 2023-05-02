@@ -12,7 +12,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <!--GoogleMaps API-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YGHnHVhnGmgZy4TU6Oaq9jmOv6gXuik"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YGHnHVhnGmgZy4TU6Oaq9jmOv6gXuik&callback=initMap" async defer></script>
+
+    <!--Leaflet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
+
     <title>Home</title>
 </head>
 
@@ -45,22 +54,34 @@
                 <label><input type="checkbox" name="crime-category" value="Larceny" checked> Larceny</label><br>
                 <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
                     Offense</label><br>
-                <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)" checked>Theft</label><br>
-                <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
-                <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo" checked>Commercial</label><br>
-                <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR" checked>Residential</label><br>
-                <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV" onclick="toggleButtons(1.2)" checked>Vehicle</label><br>
-                <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV" checked>Theft from Vehicle</label><br>
-                <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV" checked>Theft Of Vehicle</label><br>
+                <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)"
+                        checked>Theft</label><br>
+                <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF"
+                        onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
+                <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo"
+                        checked>Commercial</label><br>
+                <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR"
+                        checked>Residential</label><br>
+                <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV"
+                        onclick="toggleButtons(1.2)" checked>Vehicle</label><br>
+                <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV"
+                        checked>Theft from Vehicle</label><br>
+                <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV"
+                        checked>Theft Of Vehicle</label><br>
 
                 <br>
-                <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent" onclick="toggleButtons(2)" checked>Violent Offence</label><br>
-                <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault" onclick="toggleButtons(2.1)" checked>Assault</label><br>
-                <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW" checked>Assault With Deadly Weapon</label><br>
+                <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent"
+                        onclick="toggleButtons(2)" checked>Violent Offence</label><br>
+                <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault"
+                        onclick="toggleButtons(2.1)" checked>Assault</label><br>
+                <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW"
+                        checked>Assault With Deadly Weapon</label><br>
             </div>
         </section>
         <section class="map-box">
-            <h1>Main Map</h1>
+            <div id="map-container" style="width: 100%; height: 100%;"></div>
+        </section>
+
         </section>
     </div>
     <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()" />
@@ -72,10 +93,10 @@
         <p id="assaultToggle" style="display:none">on</p>
     </footer>
     <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category -->
-        <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
+    <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
     <script>
 
-    function toggleButtons(x) {
+        function toggleButtons(x) {
             if (x == 1) {
                 if (document.getElementById("theftToggle").innerHTML == "off") {
                     document.getElementById("breakF").style.display = "inline";
@@ -97,16 +118,16 @@
                     document.getElementById("tFV").style.display = "none";
                     document.getElementById("tOV").style.display = "none";
                     document.getElementById("theftToggle").innerHTML = "off";
-                    
+
                 }
-                
+
             } else if (x == 1.1) {
                 if (document.getElementById("breakInToggle").innerHTML == "off") {
                     document.getElementById("breakCo").style.display = "inline";
                     document.getElementById("breakR").style.display = "inline";
                     document.getElementById("breakInToggle").innerHTML = "on";
                 } else {
-                    document.getElementById("breakCo").style.display="none";
+                    document.getElementById("breakCo").style.display = "none";
                     document.getElementById("breakR").style.display = "none";
                     document.getElementById("breakInToggle").innerHTML = "off";
                 }
@@ -146,9 +167,9 @@
         }
     </script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script
-        src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
     <script src="map.js"></script>
+
 
     <!-- Add event listener for toggling crime categories -->
     <script>
@@ -157,8 +178,8 @@
                 toggleCategory(e.target.value, e.target.checked);
             });
         });
-            </script>
-    
-    </body>
-    
-    </html>
+    </script>
+
+</body>
+
+</html>

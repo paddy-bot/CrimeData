@@ -142,4 +142,11 @@ section {
     width: 25
 }
 
-/*#endregion*/
+/*#d3.js markers*/
+.marker {
+    stroke: #ffffff;
+    stroke-width: 1.5px;
+    fill: red;
+    fill-opacity: 0.6;
+    cursor: pointer;
+}
