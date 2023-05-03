@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <!--GoogleMaps API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YGHnHVhnGmgZy4TU6Oaq9jmOv6gXuik&callback=initMap" async defer></script>
-
     <!--Leaflet-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
@@ -21,7 +20,10 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/MarkerCluster.Default.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.1/leaflet.markercluster.js"></script>
-
+    <!-- Map & Api Src -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
+    <script src="map.js"></script>
     <title>Home</title>
 </head>
 
@@ -221,10 +223,6 @@
             }
         }
     </script>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
-    <script src="map.js"></script>
-
 
     <!-- Add event listener for toggling crime categories -->
     <script>
@@ -232,6 +230,11 @@
             checkbox.addEventListener('change', function (e) {
                 toggleCategory(e.target.value, e.target.checked);
             });
+        });
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            initMap();
         });
     </script>
 
