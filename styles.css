@@ -89,8 +89,8 @@ a {
 }
   
 .left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
 }
 
 /* For Mobile Responsive */
