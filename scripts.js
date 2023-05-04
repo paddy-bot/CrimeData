@@ -35,3 +35,12 @@ function hideFilter() {
 		document.getElementById("showHide").style.display = "none";
 	}
 }
+function hideDates() {
+	if (document.getElementById("dateFilter").style.display == "none") {
+		document.getElementById("dateFilter").style.display = "flex";
+		document.getElementById("hideDate").innerHTML = "Hide Date Filter";
+	} else {
+		document.getElementById("dateFilter").style.display = "none";
+		document.getElementById("hideDate").innerHTML = "Show Date Filter";
+	}
+}
