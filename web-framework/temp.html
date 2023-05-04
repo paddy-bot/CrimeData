@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/web-framework/temp-styles.css" />
+    <script src="/web-framework/temp-scripts.js" async></script>
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!--GoogleMaps API-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9YGHnHVhnGmgZy4TU6Oaq9jmOv6gXuik"></script>
+
+    <title>Crime Map Web</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#map-filters" class="nav-link map">Map</a></li>
+                <li class="nav-item"><a href="#graphs" class="nav-link graph">Graph</a></li>
+                <li class="nav-item"><a href="#faq" class="nav-link faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="map-filters">
+            <div class="filters">
+                <h1>Filters</h1>
+                <!-- Add checkboxes for crime categories -->
+                <div class="crime-filter">
+                    <label><input type="checkbox" name="crime-category" value="Motor Vehicle Theft" checked> Motor Vehicle
+                        Theft</label><br>
+                    <label><input type="checkbox" name="crime-category" value="Other Crime" checked> Other Crime</label><br>
+                    <label><input type="checkbox" name="crime-category" value="Larceny" checked> Larceny</label><br>
+                    <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
+                        Offense</label><br>
+                    <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)" checked>Theft</label><br>
+                    <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF" onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
+                    <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo" checked>Commercial</label><br>
+                    <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR" checked>Residential</label><br>
+                    <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV" onclick="toggleButtons(1.2)" checked>Vehicle</label><br>
+                    <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV" checked>Theft from Vehicle</label><br>
+                    <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV" checked>Theft Of Vehicle</label><br>
+
+                    <br>
+                    <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent" onclick="toggleButtons(2)" checked>Violent Offence</label><br>
+                    <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault" onclick="toggleButtons(2.1)" checked>Assault</label><br>
+                    <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW" checked>Assault With Deadly Weapon</label><br>
+                </div>
+                <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()" />
+            </div>
+            <div class="map-box">
+                <h1>Map</h1>
+            </div>
+        </section>
+        <section id="graphs">
+            <h1>Graphs</h1>
+        </section>
+        <section id="faq">
+            <h1>FAQ</h1>
+        </section>
+    </main>
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script
+        src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    
+    <script src="../map.js"></script>
+
+    <!-- Add event listener for toggling crime categories -->
+    <script>
+        document.querySelectorAll('input[name="crime-category"]').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function (e) {
+                toggleCategory(e.target.value, e.target.checked);
+            });
+        });
+            </script>
+</body>
+</html>
