@@ -26,10 +26,12 @@ function hideNav() { //Hides the Nav
 }
 
 function hideFilter() {
-
+	
 	if (document.getElementById("filter").style.display == "flex") {
 		document.getElementById("filter").style.display = "none";
+		document.getElementById("showHide").style.display = "flex";
 	} else {
 		document.getElementById("filter").style.display = "flex";
+		document.getElementById("showHide").style.display = "none";
 	}
 }
