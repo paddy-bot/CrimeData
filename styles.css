@@ -86,18 +86,17 @@ a {
 .grid-wrapper {
     /* min-height: 100vh */
     display: grid;
-    grid-template-columns: 4fr 4fr 4fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-content: center;
 }
 
 section {
-    outline: 2px solid var(--text);
+    border-top: 2px solid var(--text);
     background-color: var(--background);
     color: var(--text);
-    border-radius: 10px;
-    margin: 1rem;
-    padding: 20px;
+    margin: 1rem 0 0 0;
+    padding: 1rem;
     font-size: 1.25rem;
     min-height: calc(100vh - var(--nav-height) - 2rem);
 }
@@ -107,7 +106,8 @@ section {
 #map-filter {
     display: flex;
     flex-direction: row;
-    width: calc(100vw - 2rem);
+    gap: 20px;
+    width: 100vw;
 }
 
 .filter-box {
@@ -115,6 +115,19 @@ section {
     flex-direction: row;
     width: 25
 }
+
+.filters {
+    padding: 10px;
+    outline: 1px solid var(--text);
+}
+
+/*#region Map*/
+
+#map-container {
+    outline: 1px solid var(--text);
+}
+
+/*#endregion */
 
 /*#d3.js markers*/
 .marker {
