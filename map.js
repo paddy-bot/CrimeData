@@ -28,45 +28,68 @@ function initMap() {
     });
     map.addLayer(markers);
 
-    // Chart generation
+      // Chart generation
     function generateChart(filteredData) {
       var chartData = d3.rollup(filteredData, v => v.length, d => d.category);
-
-      var margin = { top: 10, right: 10, bottom: 30, left: 30 };
-      var width = 1000 - margin.left - margin.right;
-      var height = 200 - margin.top - margin.bottom;
-
+    
+      var margin = { top: 10, right: 10, bottom: 50, left: 50 };
+      var width = 750 - margin.left - margin.right;
+      var height = 500 - margin.top - margin.bottom;
+      var radius = Math.min(width, height) / 2;
+    
       d3.select("#graph-container").select("svg").remove();
-
+    
       var svg = d3.select("#graph-container")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+        .attr("transform", `translate(${margin.left + radius}, ${margin.top + radius})`);
 
-      var x = d3.scaleBand().range([0, width]).padding(0.4);
-      var y = d3.scaleLinear().range([height, 0]);
-
-      x.domain(Array.from(chartData.keys()));
-      y.domain([0, d3.max(Array.from(chartData.values()))]);
-
-      svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-      svg.append("g")
-        .call(d3.axisLeft(y));
-
-      svg.selectAll(".bar")
-        .data(Array.from(chartData.entries()))
+      svg.append("text")
+        .attr("x", 0)
+        .attr("y", -height/2 - margin.top)
+        .attr("text-anchor", "middle")
+        .style("font-size", "20px")
+        .text("Crime Data");
+    
+      var color = d3.scaleOrdinal(d3.schemeCategory10);
+    
+      var pie = d3.pie()
+        .value(function(d) { return d[1]; })
+        .sort(null);
+    
+      var data_ready = pie(Array.from(chartData));
+    
+      var arcGenerator = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius);
+    
+      svg.selectAll('slices')
+        .data(data_ready)
         .enter()
-        .append("rect")
-        .attr("class", "bar")
-        .attr("x", d => x(d[0]))
-        .attr("width", x.bandwidth())
-        .attr("y", d => y(d[1]))
-        .attr("height", d => height - y(d[1]));
+        .append('path')
+          .attr('d', arcGenerator)
+          .attr('fill', function(d) { return(color(d.data[0])) })
+          .attr("stroke", "white")
+          .style("stroke-width", "2px")
+          .style("opacity", 1)
+        .on("mouseover", function(event, d) {
+          d3.select(this).transition().duration(200).attr("opacity", 0.7);
+          tooltip.transition().duration(200).style("opacity", 0.9);
+          tooltip.html(`${d.data[0]}: ${d.data[1]}`)
+            .style("left", (event.pageX) + "px")
+            .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+          d3.select(this).transition().duration(200).attr("opacity", 1);
+          tooltip.transition().duration(200).style("opacity", 0);
+        });
+    
+      var tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
     }
 
     // Update chart data
