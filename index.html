@@ -54,7 +54,7 @@
             <h1 id="filterA">Filters</h1>
             <!-- Add checkboxes for crime categories -->
             <div class="crime-filter">	
-                <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)"
+                <label id="theftF"><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)"
                         checked>Theft</label><br>
                 <label id="breakF">&ensp;<input type="checkbox" name="Break-in" value="Break-in" id="breakF"
                         onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
@@ -107,6 +107,7 @@
             </div>
             <div id="graph-container" style ="width:100%; height: 100%;"></div>
         </section>
+        <button onclick="colorFilter()">Test Colors</button>
     </div>
     
     <footer>
@@ -243,6 +244,52 @@
                     document.getElementById("otherToggle").innerHTML = "off"
                 }
             }
+        }
+        theftColor = "#000000";
+        breakInColor = "#ff9900";
+        vehicleColor = "#ffff00";
+        violentColor = "#999900";
+        assaultColor = "#ff0000";
+        kidnappingColor = "#00ff00";
+        homicideColor = "#00ffff";
+        disturbanceColor = "#ff00ff";
+        disorderColor = "#4a86e8";
+        drugsColor = "#0000ff";
+        otherCColor = "#ff0086";
+        fireColor = "#ff00ff";
+        mEmergencyColor = "#9900ff";
+        otherColor = "#3d85c6";
+        qolCheckColor = "#3d85c6";
+        function colorFilter() {
+            document.getElementById("theftF").style.backgroundColor = theftColor;
+            document.getElementById("breakF").style.backgroundColor = breakInColor;
+            document.getElementById("breakCo").style.backgroundColor = breakInColor;
+            document.getElementById("breakR").style.backgroundColor = breakInColor;
+
+            document.getElementById("theftV").style.backgroundColor = vehicleColor;
+            document.getElementById("tFV").style.backgroundColor = vehicleColor;
+            document.getElementById("tOV").style.backgroundColor = vehicleColor;
+
+            document.getElementById("violent").style.backgroundColor = violentColor;
+            document.getElementById("assault").style.backgroundColor = assaultColor;
+            document.getElementById("assaultWDW").style.backgroundColor = assaultColor;
+            document.getElementById("Sassault").style.backgroundColor = assaultColor;
+            document.getElementById("kidnapping").style.backgroundColor = kidnappingColor;
+            document.getElementById("homicide").style.backgroundColor = homicideColor;
+
+            document.getElementById("disturbance").style.backgroundColor = disturbanceColor;
+            document.getElementById("disorder").style.backgroundColor = disorderColor;
+            document.getElementById("drugs").style.backgroundColor = drugsColor;
+            document.getElementById("narcotics").style.backgroundColor = drugsColor;
+            document.getElementById("alcohol").style.backgroundColor = drugsColor;
+
+            document.getElementById("other").style.backgroundColor = otherCColor;
+            document.getElementById("fire").style.backgroundColor = fireColor;
+            document.getElementById("medicalEmergency").style.backgroundColor = mEmergencyColor;
+            document.getElementById("otherCall").style.backgroundColor = otherColor;
+            document.getElementById("qolCheck").style.backgroundColor = qolCheckColor;
+
+
         }
     </script>
 
