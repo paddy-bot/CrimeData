@@ -119,12 +119,15 @@ section {
 .filters {
     padding: 10px;
     outline: 1px solid var(--text);
+    background-color: var(--accent);
 }
 
 /*#region Map*/
 
 #map-container {
     outline: 1px solid var(--text);
+    width: 100%;
+    height: 100%;
 }
 
 /*#endregion */
