@@ -40,47 +40,49 @@
     </header>
     <main class="grid-wrapper">
         <section id="map-filter" class="filter-box">
-            <div class="map-filter-box">
-                <div class="filters">
-                    <h1 id="filterA">Filters</h1>
-                    <!-- Add checkboxes for crime categories -->
-                    <div class="crime-filter">
-                        <label><input type="checkbox" name="crime-category" value="Motor Vehicle Theft" checked> Motor Vehicle
-                            Theft</label><br>
-                        <label><input type="checkbox" name="crime-category" value="Other Crime" checked> Other Crime</label><br>
-                        <label><input type="checkbox" name="crime-category" value="Larceny" checked> Larceny</label><br>
-                        <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
-                            Offense</label><br>
-                        <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)"
-                                checked>Theft</label><br>
-                        <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF"
-                                onclick="toggleButtons(1.1)" checked>Break-ins</label><br>
-                        <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo"
-                                checked>Commercial</label><br>
-                        <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR"
-                                checked>Residential</label><br>
-                        <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV"
-                                onclick="toggleButtons(1.2)" checked>Vehicle</label><br>
-                        <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV"
-                                checked>Theft from Vehicle</label><br>
-                        <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV"
-                                checked>Theft Of Vehicle</label><br>
-    
-                        <br>
-                        <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent"
-                                onclick="toggleButtons(2)" checked>Violent Offence</label><br>
-                        <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault"
-                                onclick="toggleButtons(2.1)" checked>Assault</label><br>
-                        <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW"
-                                checked>Assault With Deadly Weapon</label><br>
-                    </div>
-                    <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()" />
-                </div>
+            <div class="map-graph-box">
                 
                 <div id="map-container"></div>
+
+                <div id="graph-container"></div>
+                
             </div>
-            
-            <div id="graph-container"></div>
+
+            <div class="filters">
+                <h1 id="filterA">Filters</h1>
+                <!-- Add checkboxes for crime categories -->
+                <div class="crime-filter">
+                    <label><input type="checkbox" name="crime-category" value="Motor Vehicle Theft" checked> Motor Vehicle
+                        Theft</label>
+                    <label><input type="checkbox" name="crime-category" value="Other Crime" checked> Other Crime</label>
+                    <label><input type="checkbox" name="crime-category" value="Larceny" checked> Larceny</label>
+                    <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
+                        Offense</label>
+                    <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)"
+                            checked>Theft</label>
+                    <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF"
+                            onclick="toggleButtons(1.1)" checked>Break-ins</label>
+                    <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo"
+                            checked>Commercial</label>
+                    <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR"
+                            checked>Residential</label>
+                    <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV"
+                            onclick="toggleButtons(1.2)" checked>Vehicle</label>
+                    <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV"
+                            checked>Theft from Vehicle</label>
+                    <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV"
+                            checked>Theft Of Vehicle</label>
+
+                    <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent"
+                            onclick="toggleButtons(2)" checked>Violent Offence</label>
+                    <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault"
+                            onclick="toggleButtons(2.1)" checked>Assault</label>
+                    <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW"
+                            checked>Assault With Deadly Weapon</label>
+                </div>
+                <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()" />
+            </div>
+                       
         </section>
         <section id="faq">
             <h1>FAQ</h1>

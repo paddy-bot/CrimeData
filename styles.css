@@ -109,11 +109,11 @@ section {
     width: 100vw;
 }
 
-.map-filter-box {
+.map-graph-box {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    height: 60%;
+    height: 70%;
 }
 
 .filter-box {
@@ -122,25 +122,48 @@ section {
 }
 
 .filters {
-    width: 20%;
-    height: 100%;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+
+    width: 100%;
+    height: 30%;
+    padding: 1rem;
     outline: 1px solid var(--text);
     background-color: var(--accent);
+}
+
+.crime-filter {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    font-size: clamp(.75rem, 1vw, 2rem);
+}
+
+#Hide {
+    width: 20%;
 }
 
 /*#region Map*/
 
 #map-container {
     outline: 1px solid var(--text);
-    width: 80%;
+    width: 60%;
     height: 100%;
 }
 
 #graph-container {  
     outline: 1px solid var(--text);
-    width: 100%;
-    height: 40%;
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*#endregion */
