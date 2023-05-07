@@ -172,6 +172,36 @@ section {
 
 /*#endregion */
 
+/*#region FAQ*/
+
+#faq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.faq-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+
+.faq-items h3 {
+    border-bottom: 2px solid var(--text);
+}
+
+.faq-items p {
+    outline: 2px solid var(--text);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*#endregion */
+
 /*#d3.js markers*/
 .marker {
     stroke: #ffffff;
