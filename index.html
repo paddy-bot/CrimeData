@@ -45,195 +45,30 @@
                 <div id="map-container"></div>
 
                 <div id="graph-container"></div>
-                
+                <!-- Filters -->
             </div>
-
-            <div class="filters">
+             <div id ="filters">
                 <h1 id="filterA">Filters</h1>
-                <!-- Add checkboxes for crime categories -->
-                <div class="crime-filter">
-                    <label><input type="checkbox" name="crime-category" value="Motor Vehicle Theft" checked> Motor Vehicle
-                        Theft</label>
-                    <label><input type="checkbox" name="crime-category" value="Other Crime" checked> Other Crime</label>
-                    <label><input type="checkbox" name="crime-category" value="Larceny" checked> Larceny</label>
-                    <label><input type="checkbox" name="crime-category" value="Weapons Offense" checked> Weapons
-                        Offense</label>
-                    <label><input type="checkbox" name="Theft" value="Theft" id="theftF" onclick="toggleButtons(1)"
-                            checked>Theft</label>
-                    <label id="breakF"><input type="checkbox" name="Break-in" value="Break-in" id="breakF"
-                            onclick="toggleButtons(1.1)" checked>Break-ins</label>
-                    <label id="breakCo"><input type="checkbox" name="Commerical" value="Commerical" id="breakCo"
-                            checked>Commercial</label>
-                    <label id="breakR"><input type="checkbox" name="Residential" value="Residential" id="breakR"
-                            checked>Residential</label>
-                    <label id="theftV"><input type="checkbox" name="Vehicle" value="Vehicle" id="theftV"
-                            onclick="toggleButtons(1.2)" checked>Vehicle</label>
-                    <label id="tFV"><input type="checkbox" name="Theft from Vehicle" value="Theft from Vehicle" id="tFV"
-                            checked>Theft from Vehicle</label>
-                    <label id="tOV"><input type="checkbox" name="Theft Of Vehicle" value="Theft Of Vehicle" id="tOV"
-                            checked>Theft Of Vehicle</label>
-
-                    <label id="violent"><input type="checkbox" name="Violent Offence" value="Violent Offence" id="violent"
-                            onclick="toggleButtons(2)" checked>Violent Offence</label>
-                    <label id="assault"><input type="checkbox" name="Assault" value="Assault" id="assault"
-                            onclick="toggleButtons(2.1)" checked>Assault</label>
-                    <label id="assaultWDW"><input type="checkbox" name="AssaultWDW" value="AssaultWDW" id="assaultWDW"
-                            checked>Assault With Deadly Weapon</label>
-                </div>
-                <input id="Hide" type="button" value="Hide Filters" onclick="hideFilter()" />
-            </div>
+                <input type="checkbox" id="filter-MVT" value="Motor Vehicle Theft"> Motor Vehicle Theft
+                <input type="checkbox" id="filter-BreakIn" value="Break In"> Break In
+                <input type="checkbox" id="filter-Larceny" value="Larceny"> Larceny
+                <input type="checkbox" id="filter-Other" value="Other Crime"> Other Crimes
+                <input type="checkbox" id="filter-WO" value="Weapons Offense"> Weapons Offense
+                <input type="checkbox" id="filter-Fraud" value="Fraud"> Fraud
+                <input type="checkbox" id="filter-Rape" value="Rape"> Rape
+                <input type="checkbox" id="filter-SA" value="Simple Assault"> Simple Assault
+                <input type="checkbox" id="filter-AA" value="Aggravated Assault"> Aggravated Assault
+                <input type="checkbox" id="filter-Arson" value="Arson"> Arson
+                <input type="checkbox" id="filter-DOP" value="Destruction of Property"> Destruction of Property
+                <input type="checkbox" id="filter-DP" value="Drug Possession"> Drug Possession
+                <input type="checkbox" id="filter-BE" value="Breaking and Entering"> Breaking and Entering    
+             </div>
                        
         </section>
         <section id="faq">
             <h1>FAQ</h1>
         </section>
     </main>
-    
-    <footer>
-        <p id="theftToggle" style="display:none">on</p>
-        <p id="breakInToggle" style="display:none">on</p>
-        <p id="vehicleToggle" style="display:none">on</p>
-        <p id="violentOToggle" style="display:none">on</p>
-        <p id="assaultToggle" style="display:none">on</p>
-        <p id="disturbanceToggle" style="display:none">on</p>
-        <p id="drugsToggle" style="display:none">on</p>
-        <p id="otherToggle" style="display:none">on</p>
-    </footer>
-    <!-- For the toggleButtons function, the value of x corresponds to different groups of buttons categories, 1 is for the overall theft category, 2 is for the overall violent offence category -->
-    <!-- For the toggleButtons function, decimal values should be used for subcategories of main categories (ex: 1.1 for break-ins, 1.2 for vehicle theft, etc) -->
-    <script>
-
-        function toggleButtons(x) {
-            if (x == 1) {
-                if (document.getElementById("theftToggle").innerHTML == "off") {
-                    document.getElementById("breakF").style.display = "inline";
-                    if (document.getElementById("breakInToggle").innerHTML == "on") {
-                        document.getElementById("breakCo").style.display = "inline";
-                        document.getElementById("breakR").style.display = "inline";
-                    }
-                    document.getElementById("theftV").style.display = "inline";
-                    if (document.getElementById("vehicleToggle").innerHTML == "on") {
-                        document.getElementById("tFV").style.display = "inline";
-                        document.getElementById("tOV").style.display = "inline";
-                    }
-                    document.getElementById("theftToggle").innerHTML = "on";
-                } else {
-                    document.getElementById("breakF").style.display = "none";
-                    document.getElementById("breakCo").style.display = "none";
-                    document.getElementById("breakR").style.display = "none";
-                    document.getElementById("theftV").style.display = "none";
-                    document.getElementById("tFV").style.display = "none";
-                    document.getElementById("tOV").style.display = "none";
-                    document.getElementById("theftToggle").innerHTML = "off";
-
-                }
-
-            } else if (x == 1.1) {
-                if (document.getElementById("breakInToggle").innerHTML == "off") {
-                    document.getElementById("breakCo").style.display = "inline";
-                    document.getElementById("breakR").style.display = "inline";
-                    document.getElementById("breakInToggle").innerHTML = "on";
-                } else {
-                    document.getElementById("breakCo").style.display = "none";
-                    document.getElementById("breakR").style.display = "none";
-                    document.getElementById("breakInToggle").innerHTML = "off";
-                }
-            } else if (x == 1.2) {
-                if (document.getElementById("vehicleToggle").innerHTML == "off") {
-                    document.getElementById("tFV").style.display = "inline";
-                    document.getElementById("tOV").style.display = "inline";
-                    document.getElementById("vehicleToggle").innerHTML = "on";
-                } else {
-                    document.getElementById("tFV").style.display = "none";
-                    document.getElementById("tOV").style.display = "none";
-                    document.getElementById("vehicleToggle").innerHTML = "off";
-                }
-            }
-
-            if (x == 2) {
-                if (document.getElementById("violentOToggle").innerHTML == "off") {
-                    document.getElementById("assault").style.display = "inline";
-                    if (document.getElementById("assaultToggle").innerHTML == "on") {
-                        document.getElementById("assaultWDW").style.display = "inline";
-                        document.getElementById("Sassault").style.display = "inline";
-                    }
-                    document.getElementById("kidnapping").style.display = "inline";
-                    document.getElementById("homicide").style.display = "inline";
-                    document.getElementById("violentOToggle").innerHTML = "on";
-                } else {
-                    document.getElementById("assault").style.display = "none";
-                    document.getElementById("assaultWDW").style.display = "none";
-                    document.getElementById("Sassault").style.display = "none";
-                    document.getElementById("kidnapping").style.display = "none";
-                    document.getElementById("homicide").style.display = "none";
-                    document.getElementById("violentOToggle").innerHTML = "off";
-                }
-            } else if (x == 2.1) {
-                if (document.getElementById("assaultToggle").innerHTML == "off") {
-                    document.getElementById("assaultWDW").style.display = "inline";
-                    document.getElementById("Sassault").style.display = "inline";
-                    document.getElementById("assaultToggle").innerHTML = "on";
-                } else {
-                    document.getElementById("assaultWDW").style.display = "none";
-                    document.getElementById("Sassault").style.display = "none";
-                    document.getElementById("assaultToggle").innerHTML = "off";
-                }
-            }
-            
-            if (x == 3) {
-            	if (document.getElementById("disturbanceToggle").innerHTML == "off") {
-                	document.getElementById("disorder").style.display = "inline";
-                    document.getElementById("drugs").style.display = "inline";
-                    if (document.getElementById("drugsToggle").innerHTML == "on") {
-                    	document.getElementById("narcotics").style.display = "inline";
-                    	document.getElementById("alcohol").style.display = "inline";
-                    }
-                    document.getElementById("disturbanceToggle").innerHTML = "on";
-                } else {
-                	document.getElementById("disorder").style.display = "none";
-                    document.getElementById("drugs").style.display = "none";
-                    document.getElementById("narcotics").style.display = "none";
-                    document.getElementById("alcohol").style.display = "none";
-                	document.getElementById("disturbanceToggle").innerHTML = "off"
-                }
-            } else if (x == 3.1) {
-            	if (document.getElementById("drugsToggle").innerHTML == "off") {
-                	document.getElementById("narcotics").style.display = "inline";
-                    document.getElementById("alcohol").style.display = "inline";
-                    document.getElementById("drugsToggle").innerHTML = "on";
-                } else {
-                	document.getElementById("narcotics").style.display = "none";
-                    document.getElementById("alcohol").style.display = "none";
-                    document.getElementById("drugsToggle").innerHTML = "off";
-                }
-            }
-            
-            if (x == 4) {
-            	if (document.getElementById("otherToggle").innerHTML == "off") {
-                	document.getElementById("fire").style.display = "inline";
-                    document.getElementById("medicalEmergency").style.display = "inline";
-                    document.getElementById("otherCall").style.display = "inline";
-                    document.getElementById("qolCheck").style.display = "inline";
-                    document.getElementById("otherToggle").innerHTML = "on"
-                } else {
-                	document.getElementById("fire").style.display = "none";
-                    document.getElementById("medicalEmergency").style.display = "none";
-                    document.getElementById("otherCall").style.display = "none";
-                    document.getElementById("qolCheck").style.display = "none";
-                    document.getElementById("otherToggle").innerHTML = "off"
-                }
-            }
-        }
-    </script>
-
-    <!-- Add event listener for toggling crime categories -->
-    <script>
-        document.querySelectorAll('input[name="crime-category"]').forEach(function (checkbox) {
-            checkbox.addEventListener('change', function (e) {
-                toggleCategory(e.target.value, e.target.checked);
-            });
-        });
-    </script>
     <script>
         window.addEventListener('DOMContentLoaded', function () {
             initMap();

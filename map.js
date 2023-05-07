@@ -1,4 +1,8 @@
+
 function initMap() {
+  window.data = [];
+  window.map = null;
+  window.markers = null;
   d3.csv("geocoded_December2020.csv", function (d) {
     return {
       complaint: d.Complaint,
@@ -27,6 +31,14 @@ function initMap() {
       markers.addLayer(marker);
     });
     map.addLayer(markers);
+
+    // Add event listener for filter checkboxes
+    document.querySelectorAll('#filters input[type="checkbox"]').forEach((checkbox) => {
+      checkbox.addEventListener('change', updateChartAndMap);
+      
+    });
+    
+
 
       // Chart generation
     function generateChart(filteredData) {
@@ -101,6 +113,32 @@ function initMap() {
 
     updateChartData();
     map.on('moveend', updateChartData);
+    window.generateChart = generateChart;
+
+    function getSelectedCategories() {
+      const checkboxes = document.querySelectorAll('#filters input[type="checkbox"]:checked');
+      const categories = Array.from(checkboxes).map(checkbox => checkbox.value);
+      return categories;
+    }
+
+    function updateChartAndMap() {
+      const bounds = map.getBounds();
+      const selectedCategories = getSelectedCategories();
+      
+      const filteredData = data.filter((d) => bounds.contains([d.lat, d.lng]) && selectedCategories.includes(d.category));
+      
+      // Update chart
+      generateChart(filteredData);
+
+      // Update map
+      markers.clearLayers();
+      filteredData.forEach(function (d) {
+        var marker = L.marker([d.lat, d.lng]).bindPopup(d.description);
+        markers.addLayer(marker);
+      });
+      window.map.addLayer(window.markers);
+    }
+
 
   });
 }
