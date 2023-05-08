@@ -74,14 +74,35 @@ function initMap() {
       var svgLeft = svg.node().getBoundingClientRect().left;
       var svgTop = svg.node().getBoundingClientRect().top;
     
-      var colorScheme = d3.schemeSet2;
+      // var colorScheme = d3.schemeSet2;
+      // var color = d3.scaleOrdinal()
+      //   .domain(chartData.map(function(d) { return d[0]; }))
+      //   .range(colorScheme);
 
-    
+      var crimeColors = {
+        "Aggravated Assault": "#55efc4",
+        "Armed Robbery": "#81ecec",
+        "Arson":  "#74b9ff",
+        "Breaking and Entering": "#a29bfe",
+        "Burglary": "#dfe6e9",
+        "Destruction of Property": "#00b894",
+        "Drug Possession": "#00cec9",
+        "Fraud": "#0984e3",
+        "Homicide": "#6c5ce7",
+        "Larceny": "#b2bec3",
+        "Motor Vehicle Theft": "#ffeaa7",
+        "Other Assault": "#fab1a0",
+        "Other Crimes": "#ff7675",
+        "Other Drug Offense":"#fd79a8",
+        "Rape":"#fdcb6e",
+        "Robbery": "#e17055",
+        "Simple Assault": "#d63031",
+        "Weapons Offense": "#e84393",
+      }
       var color = d3.scaleOrdinal()
         .domain(chartData.map(function(d) { return d[0]; }))
-        .range(colorScheme);
+        .range(chartData.map(function(d) { return crimeColors[d[0]] || "#CCCCCC"; })); // Fallback color
 
-    
       var pie = d3.pie()
         .value(function(d) { return d[1]; })
         .sort(null);
