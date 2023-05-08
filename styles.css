@@ -141,11 +141,22 @@ section {
 
 .crime-filter {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(10%, 100%, 20%), 1fr));
+    gap: 10px;
     width: 100%;
-    height: 100%;
-    font-size: clamp(.75rem, 1vw, 2rem);
+    height: 100%;   
+}
+
+.crime-filter-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.crime-filter-text {
+    font-size: clamp(1rem, 100%, 4rem);
 }
 
 #Hide {
