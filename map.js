@@ -46,6 +46,7 @@ document.querySelector("#filter-all").addEventListener("change", function (event
       filter.style.color = filter.getAttribute("data-color");
     }
   });
+  updateChartAndMap();
 });
 
 // Add event listener for filter buttons!
@@ -65,14 +66,20 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
       button.style.color = color;
       button.style.borderColor = color;
     }
+
+    const filterAllCheckbox = document.querySelector("#filter-all");
+    if (!isSelected && filterAllCheckbox.checked) {
+      filterAllCheckbox.checked = false;
+    }
+
     if (getSelectedCategories().length === allCategories.length) {
       filterAllCheckbox.checked = true;
     }
 
-
     updateChartAndMap();
   });
 });
+
 
 
     
@@ -125,7 +132,7 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
         "Larceny": "#b2bec3",
         "Motor Vehicle Theft": "#ffeaa7",
         "Other Assault": "#fab1a0",
-        "Other Crimes": "#ff7675",
+        "Other Crime": "#ff7675",
         "Other Drug Offense":"#fd79a8",
         "Rape":"#fdcb6e",
         "Robbery": "#e17055",
