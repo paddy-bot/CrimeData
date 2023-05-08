@@ -160,7 +160,7 @@ function initMap() {
     }
 
     updateChartData();
-    map.on('moveend', updateChartData);
+    map.on('moveend', updateChartandMap);
     window.generateChart = generateChart;
 
 
