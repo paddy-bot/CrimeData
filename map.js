@@ -38,7 +38,17 @@ function initMap() {
       button.addEventListener("click", function () {
         var isSelected = button.getAttribute("data-selected") === "true";
         button.setAttribute("data-selected", !isSelected);
+
+        if (!isSelected){
+          button.style.backgroundColor = "white";
+          button.style.color = button.getAttribute("data-color");
+        } else {
+          button.style.backgroundColor = button.getAttribute("data-color");
+          button.style.color = "white";
+        }
+
         updateChartAndMap();
+
       });
     });
     
