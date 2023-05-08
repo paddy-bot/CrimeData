@@ -16,7 +16,7 @@ function initMap() {
     };
   }).then(function (data) {
     // Initialize the Leaflet Map
-    var map = L.map('map-container').setView([38.6349, -90.2910], 11);
+    var map = L.map('map-container').setView([38.6349, -90.2910], 10);
 
     var googleMapsLayer = L.gridLayer.googleMutant({
       type: 'roadmap' // Can also be 'satellite', 'terrain', or 'hybrid'
@@ -80,9 +80,6 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
   });
 });
 
-
-
-    
 
     
       // Chart generation
@@ -213,8 +210,6 @@ function getSelectedCategories() {
   }
 }
 
-
-
     function updateChartAndMap() {
       const bounds = map.getBounds();
       const selectedCategories = getSelectedCategories();
@@ -225,14 +220,14 @@ function getSelectedCategories() {
       generateChart(filteredData);
 
       // Update map
-      markers.clearLayers();
-      filteredData.forEach(function (d) {
-        var marker = L.marker([d.lat, d.lng]).bindPopup(d.description);
-        markers.addLayer(marker);
-      });
-      window.map.addLayer(window.markers);
+      if (window.map && window.markers) {
+        window.markers.clearLayers();
+        filteredData.forEach(function (d) {
+          var marker = L.marker([d.lat, d.lng]).bindPopup(d.description);
+          window.markers.addLayer(marker);
+        });
+        window.map.addLayer(window.markers);
+      }
     }
-
-
-  });
+  }); 
 }
