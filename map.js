@@ -41,9 +41,11 @@ document.querySelector("#filter-all").addEventListener("change", function (event
     if (filterAllChecked) {
       filter.style.backgroundColor = filter.getAttribute("data-color");
       filter.style.color = "white";
+      filter.style.borderColor = "white";
     } else {
       filter.style.backgroundColor = "white";
       filter.style.color = filter.getAttribute("data-color");
+      filter.style.borderColor = filter.getAttribute("data-color");
     }
   });
   updateChartAndMap();
