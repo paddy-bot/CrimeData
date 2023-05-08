@@ -38,10 +38,12 @@ function initMap() {
       button.addEventListener("click", function () {
         var isSelected = button.getAttribute("data-selected") === "true";
         button.setAttribute("data-selected", !isSelected);
+        var color = button.getAttribute("data-color");
 
         if (!isSelected){
           button.style.backgroundColor = "white";
-          button.style.color = button.getAttribute("data-color");
+          button.style.color = color;
+          button.style.borderColor = color;
         } else {
           button.style.backgroundColor = button.getAttribute("data-color");
           button.style.color = "white";
@@ -160,7 +162,7 @@ function initMap() {
     }
 
     updateChartData();
-    map.on('moveend', updateChartandMap);
+    map.on('moveend', updateChartData);
     window.generateChart = generateChart;
 
 
