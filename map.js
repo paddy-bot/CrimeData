@@ -187,7 +187,7 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
       "Aggravated Assault", "Armed Robbery", "Arson", "Breaking and Entering",
       "Burglary", "Destruction of Property", "Drug Possession", "Fraud",
       "Homicide", "Larceny", "Motor Vehicle Theft", "Other Assault",
-      "Other Crimes", "Other Drug Offense", "Rape", "Robbery",
+      "Other Crime", "Other Drug Offense", "Rape", "Robbery",
       "Simple Assault", "Weapons Offense"
     ];
 
