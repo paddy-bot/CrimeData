@@ -32,10 +32,14 @@ function initMap() {
     });
     map.addLayer(markers);
 
-    // Add event listener for filter checkboxes
-    document.querySelectorAll('#filters input[type="checkbox"]').forEach((checkbox) => {
-      checkbox.addEventListener('change', updateChartAndMap);
-      
+    // Add event listener for filter buttons!
+
+    document.querySelectorAll(".crime-filter-item").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var isSelected = button.getAttribute("data-selected") === "true";
+        button.setAttribute("data-selected", !isSelected);
+        updateChartAndMap();
+      });
     });
     
 
@@ -73,11 +77,6 @@ function initMap() {
       
       var svgLeft = svg.node().getBoundingClientRect().left;
       var svgTop = svg.node().getBoundingClientRect().top;
-    
-      // var colorScheme = d3.schemeSet2;
-      // var color = d3.scaleOrdinal()
-      //   .domain(chartData.map(function(d) { return d[0]; }))
-      //   .range(colorScheme);
 
       var crimeColors = {
         "Aggravated Assault": "#55efc4",
@@ -154,12 +153,12 @@ function initMap() {
     map.on('moveend', updateChartData);
     window.generateChart = generateChart;
 
-    function getSelectedCategories() {
-      const checkboxes = document.querySelectorAll('#filters input[type="checkbox"]:checked');
-      const categories = Array.from(checkboxes).map(checkbox => checkbox.value);
-      return categories;
-    }
 
+      function getSelectedCategories() {
+        const buttons = document.querySelectorAll('.crime-filter-item[data-selected="true"]');
+        const categories = Array.from(buttons).map(button => button.value);
+        return categories;
+    }
     function updateChartAndMap() {
       const bounds = map.getBounds();
       const selectedCategories = getSelectedCategories();
