@@ -16,7 +16,7 @@ function initMap() {
     };
   }).then(function (data) {
     // Initialize the Leaflet Map
-    var map = L.map('map-container').setView([38.627, -90.199], 12);
+    var map = L.map('map-container').setView([38.6349, -90.2910], 12);
 
     var googleMapsLayer = L.gridLayer.googleMutant({
       type: 'roadmap' // Can also be 'satellite', 'terrain', or 'hybrid'
