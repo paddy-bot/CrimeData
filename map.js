@@ -46,8 +46,6 @@ document.querySelector("#filter-all").addEventListener("change", function (event
       filter.style.color = filter.getAttribute("data-color");
     }
   });
-
-  updateChartAndMap();
 });
 
 // Add event listener for filter buttons!
