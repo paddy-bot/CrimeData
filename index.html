@@ -24,6 +24,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/leaflet.gridlayer.googlemutant@latest/dist/Leaflet.GoogleMutant.js"></script>
     <script src="map.js"></script>
+    <script src="filter-border.js"></script>
     
     <title>Home</title>
 </head>
@@ -50,110 +51,110 @@
              <div id ="filters">
                 <h1 id="filterA">Filters</h1>
                 <div class="crime-filter">
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-AA" value="Aggravated Assault" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#55efc4">
+                        <input type="checkbox" id="filter-AA" value="Aggravated Assault"  checked>
                         <p class="crime-filter-text">
                             Aggravated Assault
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-ARob" value="Armed Robbery" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#81ecec">
+                        <input type="checkbox" id="filter-ARob" value="Armed Robbery" checked>
                         <p class="crime-filter-text">
                             Armed Robbery
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Arson" value="Arson" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#74b9ff">
+                        <input type="checkbox" id="filter-Arson" value="Arson"checked>
                         <p class="crime-filter-text">
                             Arson
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-BE" value="Breaking and Entering" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#a29bfe">
+                        <input type="checkbox" id="filter-BE" value="Breaking and Entering"checked>
                         <p class="crime-filter-text">
                             Breaking and Entering  
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Bu" value="Burglary" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#dfe6e9">
+                        <input type="checkbox" id="filter-Bu" value="Burglary"checked>
                         <p class="crime-filter-text">
                             Burglary
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-DOP" value="Destruction of Property" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#00b894">
+                        <input type="checkbox" id="filter-DOP" value="Destruction of Property" checked>
                         <p class="crime-filter-text">
                             Destruction of Property
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-DP" value="Drug Possession" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#00cec9">
+                        <input type="checkbox" id="filter-DP" value="Drug Possession" checked>
                         <p class="crime-filter-text">
                             Drug Possession
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Fraud" value="Fraud" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#0984e3">
+                        <input type="checkbox" id="filter-Fraud" value="Fraud"checked>
                         <p class="crime-filter-text">
                             Fraud
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Ho" value="Homicide" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#6c5ce7">
+                        <input type="checkbox" id="filter-Ho" value="Homicide" checked>
                         <p class="crime-filter-text">
                             Homicide
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Larceny" value="Larceny" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#b2bec3">
+                        <input type="checkbox" id="filter-Larceny" value="Larceny"checked>
                         <p class="crime-filter-text">
                             Larceny
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-MVT" value="Motor Vehicle Theft" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#ffeaa7">
+                        <input type="checkbox" id="filter-MVT" value="Motor Vehicle Theft"  checked>
                         <p class="crime-filter-text">
                             Motor Vehicle Theft
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-OtherA" value="Other Assault" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#fab1a0">
+                        <input type="checkbox" id="filter-OtherA" value="Other Assault"checked>
                         <p class="crime-filter-text">
                             Other Assault
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Other" value="Other Crime" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#ff7675">
+                        <input type="checkbox" id="filter-Other" value="Other Crime" checked>
                         <p class="crime-filter-text">
                             Other Crimes
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-OtherDO" value="Other Drug Offense" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#fd79a8">
+                        <input type="checkbox" id="filter-OtherDO" value="Other Drug Offense"checked>
                         <p class="crime-filter-text">
                             Other Drug Offense
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Rape" value="Rape" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#fdcb6e">
+                        <input type="checkbox" id="filter-Rape" value="Rape" checked>
                         <p class="crime-filter-text">
                             Rape
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-Rob" value="Robbery" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#e17055">
+                        <input type="checkbox" id="filter-Rob" value="Robbery" checked>
                         <p class="crime-filter-text">
                             Robbery
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-SA" value="Simple Assault" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#d63031">
+                        <input type="checkbox" id="filter-SA" value="Simple Assault"  checked>
                         <p class="crime-filter-text">
                             Simple Assault
                         </p>
                     </div>
-                    <div class="crime-filter-item">
-                        <input type="checkbox" id="filter-WO" value="Weapons Offense" style="accent-color:red" checked>
+                    <div class="crime-filter-item" data-color="#e84393">
+                        <input type="checkbox" id="filter-WO" value="Weapons Offense" checked>
                         <p class="crime-filter-text">
                             Weapons Offense
                         </p>
