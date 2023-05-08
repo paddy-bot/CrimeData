@@ -152,7 +152,13 @@ function initMap() {
           .style("opacity", 0);
 
     }
-    
+    var allCategories = [
+      "Aggravated Assault", "Armed Robbery", "Arson", "Breaking and Entering",
+      "Burglary", "Destruction of Property", "Drug Possession", "Fraud",
+      "Homicide", "Larceny", "Motor Vehicle Theft", "Other Assault",
+      "Other Crimes", "Other Drug Offense", "Rape", "Robbery",
+      "Simple Assault", "Weapons Offense"
+    ];
 
     // Update chart data
     function updateChartData() {
@@ -165,12 +171,13 @@ function initMap() {
     map.on('moveend', updateChartData);
     window.generateChart = generateChart;
 
-
-      function getSelectedCategories() {
-        const buttons = document.querySelectorAll('.crime-filter-item[data-selected="true"]');
-        const categories = Array.from(buttons).map(button => button.value);
-        return categories;
+    function getSelectedCategories() {
+      const buttons = document.querySelectorAll('.crime-filter-item[data-selected="true"]');
+      const selectedCategories = Array.from(buttons).map(button => button.value);
+      const otherCategories = allCategories.filter(category => !selectedCategories.includes(category));
+      return otherCategories;
     }
+
     function updateChartAndMap() {
       const bounds = map.getBounds();
       const selectedCategories = getSelectedCategories();
