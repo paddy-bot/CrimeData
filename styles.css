@@ -170,6 +170,10 @@ section {
     justify-content: center;
 }
 
+#graph-container svg {
+    overflow: visible;
+  }
+
 /*#endregion */
 
 /*#region FAQ*/

@@ -39,15 +39,21 @@ function initMap() {
     });
     
 
-
+    
       // Chart generation
     function generateChart(filteredData) {
       var chartData = d3.rollup(filteredData, v => v.length, d => d.category);
+
+      chartData = Array.from(chartData).sort(function(a, b) {
+        return a[1] - b[1];
+      });
     
       var margin = { top: 10, right: 10, bottom: 50, left: 50 };
-      var width = 750 - margin.left - margin.right;
-      var height = 500 - margin.top - margin.bottom;
+      var width = 850 - margin.left - margin.right;
+      var height = 600 - margin.top - margin.bottom;
       var radius = Math.min(width, height) / 2;
+
+      
     
       d3.select("#graph-container").select("svg").remove();
     
@@ -63,9 +69,18 @@ function initMap() {
         .attr("y", -height/2 - margin.top)
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
-        .text("Crime Data");
+        .text("Crime Data by Category");
+      
+      var svgLeft = svg.node().getBoundingClientRect().left;
+      var svgTop = svg.node().getBoundingClientRect().top;
     
-      var color = d3.scaleOrdinal(d3.schemeCategory10);
+      var colorScheme = d3.schemeSet2;
+
+    
+      var color = d3.scaleOrdinal()
+        .domain(chartData.map(function(d) { return d[0]; }))
+        .range(colorScheme);
+
     
       var pie = d3.pie()
         .value(function(d) { return d[1]; })
@@ -82,7 +97,7 @@ function initMap() {
         .enter()
         .append('path')
           .attr('d', arcGenerator)
-          .attr('fill', function(d) { return(color(d.data[0])) })
+          .attr('fill', function(d) { return color(d.data[0]); })
           .attr("stroke", "white")
           .style("stroke-width", "2px")
           .style("opacity", 1)
@@ -90,19 +105,22 @@ function initMap() {
           d3.select(this).transition().duration(200).attr("opacity", 0.7);
           tooltip.transition().duration(200).style("opacity", 0.9);
           tooltip.html(`${d.data[0]}: ${d.data[1]}`)
-            .style("left", (event.pageX) + "px")
-            .style("top", (event.pageY - 28) + "px");
+            .style("left", (svgLeft + margin.left + radius) + "px")
+            .style("top", (svgTop + margin.top + height + 20) + "px")
+            .style("position", "absolute");
         })
         .on("mouseout", function(d) {
           d3.select(this).transition().duration(200).attr("opacity", 1);
           tooltip.transition().duration(200).style("opacity", 0);
         });
     
-      var tooltip = d3.select("body")
-        .append("div")
-        .attr("class", "tooltip")
-        .style("opacity", 0);
+        var tooltip = d3.select("#graph-container")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0);
+
     }
+    
 
     // Update chart data
     function updateChartData() {
