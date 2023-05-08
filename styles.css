@@ -172,6 +172,8 @@ section {
 
 #graph-container svg {
     overflow: visible;
+    width: clamp(250px, 100%, 800px);
+    height: clamp(250px, 100%, 600px);
   }
 
 /*#endregion */
@@ -213,4 +215,20 @@ section {
     fill: red;
     fill-opacity: 0.6;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1600px) {
+    .map-graph-box {
+        flex-direction: column;
+    }    
+
+    #map-container {
+        width: 100%;
+    }
+
+    #graph-container {
+        width: 100%;
+        height: fit-content;
+        padding: 2rem;
+    }
 }
