@@ -139,6 +139,19 @@ section {
     background-color: var(--accent);
 }
 
+.filter-all {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.filter-all input {
+    width: 2rem;
+    height: 2rem;
+    accent-color: var(--text);
+}
+
 .crime-filter {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(clamp(25%, 100%, 20%), 1fr));
