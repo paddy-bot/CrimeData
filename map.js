@@ -197,7 +197,7 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
     }
 
     updateChartData();
-    map.on('moveend', updateChartandMap);
+    map.on('moveend', updateChartAndMap);
     window.generateChart = generateChart;
 
 function getSelectedCategories() {
