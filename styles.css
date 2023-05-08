@@ -101,7 +101,7 @@ section {
     margin: 1rem 0 0 0;
     padding: 1rem;
     font-size: 1.25rem;
-    min-height: calc(100vh - var(--nav-height) - 2rem);
+    min-height: fit-content;
 }
 
 /*#region Filters*/
