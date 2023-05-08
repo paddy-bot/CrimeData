@@ -176,7 +176,7 @@ section {
     outline: 1px solid var(--text);
     width: 40%;
     height: 100%;
-
+    padding: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
