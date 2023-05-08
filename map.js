@@ -53,10 +53,6 @@ document.querySelector("#filter-all").addEventListener("change", function (event
 // Add event listener for filter buttons!
 document.querySelectorAll(".crime-filter-item").forEach(function (button) {
   button.addEventListener("click", function () {
-    const filterAllCheckbox = document.querySelector('#filter-all');
-    if (filterAllCheckbox.checked) {
-      filterAllCheckbox.checked = false;
-    }
 
     var isSelected = button.getAttribute("data-selected") === "true";
     button.setAttribute("data-selected", !isSelected);
