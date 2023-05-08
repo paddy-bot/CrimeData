@@ -1,4 +1,3 @@
-
 function initMap() {
   window.data = [];
   window.map = null;
@@ -31,28 +30,58 @@ function initMap() {
       markers.addLayer(marker);
     });
     map.addLayer(markers);
+// Add Filter All
+document.querySelector("#filter-all").addEventListener("change", function (event) {
+  const allFilters = document.querySelectorAll(".crime-filter-item");
+  const filterAllChecked = event.target.checked;
 
-    // Add event listener for filter buttons!
+  allFilters.forEach(function (filter) {
+    filter.setAttribute("data-selected", filterAllChecked ? "true" : "false");
 
+    if (filterAllChecked) {
+      filter.style.backgroundColor = filter.getAttribute("data-color");
+      filter.style.color = "white";
+    } else {
+      filter.style.backgroundColor = "white";
+      filter.style.color = filter.getAttribute("data-color");
+    }
+  });
+
+  updateChartAndMap();
+});
+
+// Add event listener for filter buttons!
     document.querySelectorAll(".crime-filter-item").forEach(function (button) {
       button.addEventListener("click", function () {
+        const filterAllCheckbox = document.querySelector('#filter-all');
+        if (filterAllCheckbox.checked) {
+          filterAllCheckbox.checked = false;
+          const allFilters = document.querySelectorAll(".crime-filter-item");
+          allFilters.forEach(function (filter) {
+            filter.setAttribute("data-selected", "false");
+            filter.style.backgroundColor = "white";
+            filter.style.color = filter.getAttribute("data-color");
+          });
+        }
+
         var isSelected = button.getAttribute("data-selected") === "true";
         button.setAttribute("data-selected", !isSelected);
         var color = button.getAttribute("data-color");
 
         if (!isSelected){
+          button.style.backgroundColor = color;
+          button.style.color = "white";
+          button.style.borderColor = "white";
+        } else {
           button.style.backgroundColor = "white";
           button.style.color = color;
           button.style.borderColor = color;
-        } else {
-          button.style.backgroundColor = button.getAttribute("data-color");
-          button.style.color = "white";
         }
 
         updateChartAndMap();
-
       });
     });
+
     
 
     
@@ -171,12 +200,17 @@ function initMap() {
     map.on('moveend', updateChartData);
     window.generateChart = generateChart;
 
-    function getSelectedCategories() {
-      const buttons = document.querySelectorAll('.crime-filter-item[data-selected="true"]');
-      const selectedCategories = Array.from(buttons).map(button => button.value);
-      const otherCategories = allCategories.filter(category => !selectedCategories.includes(category));
-      return otherCategories;
-    }
+function getSelectedCategories() {
+  const filterAllCheckbox = document.querySelector('#filter-all');
+  if (filterAllCheckbox.checked) {
+    return Array.from(document.querySelectorAll('.crime-filter-item')).map(button => button.value);
+  } else {
+    const buttons = document.querySelectorAll('.crime-filter-item[data-selected="true"]');
+    const categories = Array.from(buttons).map(button => button.value);
+    return categories;
+  }
+}
+
 
     function updateChartAndMap() {
       const bounds = map.getBounds();
