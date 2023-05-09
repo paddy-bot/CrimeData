@@ -28,13 +28,25 @@ body {
 
 header {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 70%;
     min-height: var(--nav-height);
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    transition: all .3s;
+    border-bottom: 2px solid var(--background);
+}
+
+.title:hover {
+    opacity: 90%;
+    border-bottom: 2px solid var(--text);
 }
 
 li {
@@ -74,15 +86,13 @@ a {
     transition: all .3s linear;
 }
 
-.nav-link:hover {
-    opacity: 80%;
-    font-size: 1.6rem;
-    border-bottom: 2px solid var(--text);
+.nav-link {
+    border-bottom: 2px solid var(--accent);
+    transition: all .3s;
 }
 
-.active {
+.nav-link:hover {
     opacity: 80%;
-    font-size: 1.6rem;
     border-bottom: 2px solid var(--text);
 }
 /*#endregion*/
