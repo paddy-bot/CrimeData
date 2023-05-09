@@ -20,24 +20,35 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     margin: 0;
-    padding: var(--nav-height) 0 0 0;
     background-color: var(--background);
     width: 200vw;
-    height: fit-content;
+    height: 100vh;
 }
 
 header {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: var(--nav-height);
+    height: var(--nav-height);
     background-color: var(--background);
     z-index: 10000;
 }
+
+li {
+    list-style: none;
+}
+
+a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+/*#region Navbar */
 
 .title {
     font-size: 3rem;
@@ -51,21 +62,12 @@ header {
     border-bottom: 2px solid var(--text);
 }
 
-li {
-    list-style: none;
-}
-a {
-    color: var(--text);
-    text-decoration: none;
-}
-
-/*#region Navbar */
-
 .navbar {
     display: flex;
-    height: var(--nav-height);
-    width: fit-content;
-    padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 25vw;
     background-color: var(--accent);
     border-radius: 15px;
 }
@@ -73,19 +75,17 @@ a {
 .nav-menu {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 60px;
-    padding: 0 1.5rem;
+    justify-content: space-evenly;
+    height: 100%;
     width: 100%;
+    padding-left: 0;
 }
 
 .nav-item {
-    padding: 1rem;
     font-size: 1.5rem;
-    text-transform: uppercase;
     font-weight: bold;
-    transition: all .3s linear;
+    text-transform: uppercase;
 }
 
 .nav-link {
@@ -101,77 +101,89 @@ a {
 
 .grid-wrapper {
     display: grid;
+    margin-top: var(--nav-height);
     grid-template-columns: 1fr 1fr;
-    justify-content: center;
-    align-content: center;
 }
 
 section {
     border-top: 2px solid var(--text);
     background-color: var(--background);
     color: var(--text);
-    margin: 1rem 0 0 0;
+    margin: 1rem 0;
     padding: 1rem;
     font-size: 1.25rem;
-    min-height: fit-content;
+    max-height: calc(100vh - var(--nav-height));
 }
 
 /*#region Filters*/
 
 #map-filter {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
     gap: 20px;
-    width: 100vw;
-    height: 100vh;
+    height: fit-content;
 }
 
-.map-graph-box {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    height: 50%;
+#map-container {
+    grid-column: 1;
+    outline: 1px solid var(--text);
 }
 
-.filters {
+#graph-container {  
+    grid-column: 2;
+    outline: 1px solid var(--text);
+    padding: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#graph-container svg {
+    overflow: visible;
+    width: fit-content;
+    height: fit-content;
+}
+
+#filters {
+    grid-column: 1 / span 2;
+    outline: 1px solid var(--text);
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
-    width: 100%;
-    height: 50%;
     padding: 1rem;
-    
-    background-color: var(--accent);
 }
 
 .filter-all {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1rem;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
 }
 
 .filter-all input {
-    width: 2rem;
-    height: 2rem;
+    width: 20px;
+    height: 20px;
     accent-color: var(--text);
 }
 
 .crime-filter {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(clamp(25%, 100%, 20%), 1fr));
-    gap: 1rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, .5fr));
+    grid-template-rows: repeat(6, minmax(100px, .25fr));
+    height: fit-content;
+    gap: 20px;
     width: 100%;
     height: 100%;   
-    padding: 10px;
-    outline: 1px solid var(--text);
+    padding: 1rem;
 }
 
 .crime-filter-item {
-    width: 100%;
-    height: 100%;
     border-radius: 10px;
     border: 2px solid white;
     color: white;
@@ -184,33 +196,6 @@ section {
     width: 20%;
 }
 
-
-
-/*#region Map*/
-
-#map-container {
-    outline: 1px solid var(--text);
-    width: 60%;
-    min-height: 50vh;
-}
-
-#graph-container {  
-    outline: 1px solid var(--text);
-    width: 40%;
-    min-height: 50vh;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#graph-container svg {
-    overflow: visible;
-    width: clamp(250px, 100%, 800px);
-    height: clamp(250px, 100%, 600px);
-  }
-
-/*#endregion */
 
 /*#region FAQ*/
 
@@ -251,19 +236,13 @@ section {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 1600px) {
-    .map-graph-box {
+@media screen and (max-width: 1800px) {
+    #map-filter {
+        display: flex;
         flex-direction: column;
-    }    
-
+        height: fit-content;
+    }
     #map-container {
-        width: 100%;
-        min-height: 35vh;
+        min-height: 50vh;
     }
-
-    #graph-container {
-        width: 100%;
-        min-height: 35vh;
-        padding: 2rem;
-    }
-}
+  }
