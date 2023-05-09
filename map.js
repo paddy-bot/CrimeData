@@ -165,8 +165,9 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
           .attr("stroke", "white")
           .style("stroke-width", "2px")
           .style("opacity", 1)
-          .on("mouseover", function(event, d) {
+          .on("mouseenter", function(event, d) {
               d3.select(this)
+                  .interrupt()
                   .transition()
                   .duration(200)
                   .attr("opacity", 0.7)
@@ -177,8 +178,9 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
                   .style("top", (svgTop + margin.top + height + 20) + "px")
                   .style("position", "absolute");
           })
-          .on("mouseout", function(event, d) {
+          .on("mouseleave", function(event, d) {
               d3.select(this)
+                  .interrupt()
                   .transition()
                   .duration(200)
                   .attr("opacity", 1)
@@ -242,6 +244,8 @@ function getSelectedCategories() {
           window.markers.addLayer(marker);
         });
         window.map.addLayer(window.markers);
+
+        
       }
     }
   }); 
