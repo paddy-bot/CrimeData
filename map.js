@@ -147,7 +147,11 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
         .sort(null);
     
       var data_ready = pie(Array.from(chartData));
-    
+
+      var arcHover = d3.arc()
+        .innerRadius(0)
+        .outerRadius(radius + 10);
+
       var arcGenerator = d3.arc()
         .innerRadius(0)
         .outerRadius(radius);
@@ -161,18 +165,27 @@ document.querySelectorAll(".crime-filter-item").forEach(function (button) {
           .attr("stroke", "white")
           .style("stroke-width", "2px")
           .style("opacity", 1)
-        .on("mouseover", function(event, d) {
-          d3.select(this).transition().duration(200).attr("opacity", 0.7);
-          tooltip.transition().duration(200).style("opacity", 0.9);
-          tooltip.html(`${d.data[0]}: ${d.data[1]}`)
-            .style("left", (svgLeft + margin.left + radius) + "px")
-            .style("top", (svgTop + margin.top + height + 20) + "px")
-            .style("position", "absolute");
-        })
-        .on("mouseout", function(d) {
-          d3.select(this).transition().duration(200).attr("opacity", 1);
-          tooltip.transition().duration(200).style("opacity", 0);
-        });
+          .on("mouseover", function(event, d) {
+              d3.select(this)
+                  .transition()
+                  .duration(200)
+                  .attr("opacity", 0.7)
+                  .attr("d", arcHover(d));  // Use the hover arc generator
+              tooltip.transition().duration(200).style("opacity", 0.9);
+              tooltip.html(`${d.data[0]}: ${d.data[1]}`)
+                  .style("left", (svgLeft + margin.left + radius) + "px")
+                  .style("top", (svgTop + margin.top + height + 20) + "px")
+                  .style("position", "absolute");
+          })
+          .on("mouseout", function(event, d) {
+              d3.select(this)
+                  .transition()
+                  .duration(200)
+                  .attr("opacity", 1)
+                  .attr("d", arcGenerator(d));  // Revert to the original arc
+              tooltip.transition().duration(200).style("opacity", 0);
+          })
+
     
         var tooltip = d3.select("#graph-container")
           .append("div")
