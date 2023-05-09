@@ -23,7 +23,7 @@ body {
     padding: var(--nav-height) 0 0 0;
     background-color: var(--background);
     width: 200vw;
-    height: calc(100vh - 2 * var(--nav-height));
+    height: fit-content;
 }
 
 header {
@@ -33,8 +33,10 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    width: 70%;
+    width: 100%;
     min-height: var(--nav-height);
+    background-color: var(--background);
+    z-index: 10000;
 }
 
 .title {
@@ -128,12 +130,7 @@ section {
     display: flex;
     flex-direction: row;
     gap: 20px;
-    height: 55vh;
-}
-
-.filter-box {
-    display: flex;
-    flex-direction: row;
+    height: 50%;
 }
 
 .filters {
@@ -194,13 +191,13 @@ section {
 #map-container {
     outline: 1px solid var(--text);
     width: 60%;
-    height: 100%;
+    
 }
 
 #graph-container {  
     outline: 1px solid var(--text);
     width: 40%;
-    height: 100%;
+    
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -262,12 +259,12 @@ section {
 
     #map-container {
         width: 100%;
-        height: 50vh;
+        min-height: 50vh;
     }
 
     #graph-container {
         width: 100%;
-        height: fit-content;
+        min-height: fit-content;
         padding: 2rem;
     }
 }
