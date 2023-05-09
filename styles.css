@@ -123,7 +123,7 @@ section {
     flex-direction: column;
     gap: 20px;
     width: 100vw;
-    
+    height: 100vh;
 }
 
 .map-graph-box {
@@ -191,13 +191,13 @@ section {
 #map-container {
     outline: 1px solid var(--text);
     width: 60%;
-    
+    min-height: 50vh;
 }
 
 #graph-container {  
     outline: 1px solid var(--text);
     width: 40%;
-    
+    min-height: 50vh;
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -220,7 +220,6 @@ section {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: fit-content;
 }
 
 .faq-items {
@@ -259,12 +258,12 @@ section {
 
     #map-container {
         width: 100%;
-        min-height: 50vh;
+        min-height: 35vh;
     }
 
     #graph-container {
         width: 100%;
-        min-height: fit-content;
+        min-height: 35vh;
         padding: 2rem;
     }
 }
